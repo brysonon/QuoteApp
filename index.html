@@ -1,1 +1,339 @@
-<h1>placeholder</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Positive Programmer Quotes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Optional: clean modern font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg-gradient-start: #0f172a;
+      --bg-gradient-end: #020617;
+      --card-bg: rgba(15, 23, 42, 0.95);
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.18);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --shadow-strong: 0 24px 60px rgba(0, 0, 0, 0.6);
+      --radius-xl: 1.5rem;
+      --radius-lg: 1rem;
+      --transition-fast: 150ms ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 60%);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 640px;
+    }
+
+    .card {
+      position: relative;
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-strong);
+      padding: 2.5rem 2.8rem 2.25rem;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      overflow: hidden;
+    }
+
+    /* Glow accent behind card content */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.18), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(129, 140, 248, 0.16), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+      text-align: center;
+    }
+
+    .title-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 0, rgba(56, 189, 248, 0.3), transparent 55%);
+      backdrop-filter: blur(12px);
+      font-size: 1.25rem;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .quote-box {
+      margin: 0 auto 1.75rem;
+      padding: 1.8rem 1.6rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background:
+        linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.9)),
+        radial-gradient(circle at top left, var(--accent-soft), transparent 60%);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.95);
+      max-width: 100%;
+    }
+
+    .quote-text {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .quote-prefix {
+      font-size: 1.5rem;
+      margin-right: 0.35rem;
+      opacity: 0.9;
+    }
+
+    .quote-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1.1rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.9;
+    }
+
+    .pill {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.75rem;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      appearance: none;
+      border: none;
+      border-radius: 999px;
+      padding: 0.85rem 1.7rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      color: #0b1020;
+      box-shadow:
+        0 12px 30px rgba(56, 189, 248, 0.32),
+        0 0 0 1px rgba(15, 23, 42, 0.7);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        filter var(--transition-fast);
+    }
+
+    button span.icon {
+      font-size: 1.1rem;
+    }
+
+    button:hover {
+      transform: translateY(-1px) scale(1.01);
+      filter: brightness(1.05);
+      box-shadow:
+        0 18px 40px rgba(56, 189, 248, 0.45),
+        0 0 0 1px rgba(15, 23, 42, 0.7);
+    }
+
+    button:active {
+      transform: translateY(0) scale(0.99);
+      box-shadow:
+        0 10px 20px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+    }
+
+    .hint {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 0.7rem;
+      opacity: 0.8;
+    }
+
+    /* Fade-in animation for new quote */
+    .fade-in {
+      animation: fadeInUp 260ms ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      .card {
+        padding: 1.9rem 1.6rem 1.8rem;
+      }
+
+      h1 {
+        font-size: 1.3rem;
+      }
+
+      .quote-text {
+        font-size: 1.15rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-inner">
+        <div class="title-row">
+          <div class="title-icon">💻</div>
+          <h1>Positive Quotes for Programmers</h1>
+        </div>
+
+        <p class="subtitle">
+          Tap the button whenever your code (or your mood) needs a quick refresh.
+        </p>
+
+        <div class="quote-box">
+          <div class="quote-text" id="quote">
+            <span class="quote-prefix">“</span>
+            <span id="quote-text-body">
+              Click “Generate Quote” to get a little boost of dev energy.
+            </span>
+          </div>
+          <div class="quote-meta">
+            <span>For: Software Developers</span>
+            <span class="pill">Debugging your mindset 🧠</span>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="generate-btn">
+            <span class="icon">⚡</span>
+            <span>Generate Quote</span>
+          </button>
+        </div>
+
+        <p class="hint">Pro tip: use this between compile runs.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const quotes = [
+      "Every legendary app started as a single 'Hello, world.' Keep going.",
+      "You don't have to write perfect code; you just have to write the next line.",
+      "Bugs aren't failures—they're your code leaving you helpful notes.",
+      "You’re not stuck; your brain is just compiling a better solution.",
+      "Good programmers solve problems. Great programmers believe they can.",
+      "Every error message is a roadmap, not a wall.",
+      "You’ve already debugged harder problems than this. You can handle it.",
+      "Ship the small thing today; the big thing is just many small things in a trench coat.",
+      "The best optimization is believing your future self will figure it out.",
+      "You’re not behind. You’re on your own version of the learning curve.",
+      "If you can read error logs, you can read your way out of almost anything.",
+      "Progress in code is measured in commits, not perfection.",
+      "Your brain is better than you think; give it time to cache the idea.",
+      "Today's confusing concept is tomorrow's easy interview question.",
+      "You are allowed to Google it and still be a real engineer.",
+      "The fact that you care about writing good code already makes you one of the good ones.",
+      "You’re not starting from scratch—you’re starting from experience.",
+      "Every refactor is proof that you’ve grown since the last version of yourself.",
+      "Curiosity is your superpower; the syntax will catch up.",
+      "Somewhere out there, future users are grateful you didn't give up today."
+    ];
+
+    const quoteBodyEl = document.getElementById("quote-text-body");
+    const generateBtn = document.getElementById("generate-btn");
+    const quoteTextContainer = document.getElementById("quote");
+
+    function getRandomQuote() {
+      const index = Math.floor(Math.random() * quotes.length);
+      return quotes[index];
+    }
+
+    function showRandomQuote() {
+      const newQuote = getRandomQuote();
+
+      // Restart animation
+      quoteTextContainer.classList.remove("fade-in");
+      // Force reflow to allow re-adding the class
+      // eslint-disable-next-line no-unused-expressions
+      quoteTextContainer.offsetWidth;
+      quoteTextContainer.classList.add("fade-in");
+
+      quoteBodyEl.textContent = newQuote;
+    }
+
+    generateBtn.addEventListener("click", showRandomQuote);
+
+    // Optional: show an initial random quote on load
+    window.addEventListener("DOMContentLoaded", showRandomQuote);
+  </script>
+</body>
+</html>
